@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         initTextSpan1()
         initTextSpan2()
         initTextSpan3()
@@ -26,23 +25,21 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun initTextSpan1() {
-        val spannableString = SpannableString("我是哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈")
-        val tagSpan2 =
-            ImgTextSpan(this, Paint.Style.STROKE, redColor, redColor, sp2px(16f), 3, 10, 10, 10)
+        val spannableString = SpannableString("a西安北京重庆青岛天津上海广州西安北京重庆青岛天津上海广州")
+        val tagSpan2 = ImgTextSpan(this, Paint.Style.STROKE, redColor, redColor, sp2px(16f), 3, 10, 10, 10)
         spannableString.setSpan(tagSpan2, 0, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         tv_span1.text = spannableString
     }
 
     private fun initTextSpan2() {
-        val spannableString = SpannableString("我是哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈")
-        val tagSpan2 =
-            ImgTextSpan(this, Paint.Style.FILL, whiteColor, redColor, sp2px(16f), 3, 10, 10, 10)
+        val spannableString = SpannableString("A西安北京重庆青岛天津上海广州西安北京重庆青岛天津上海广州")
+        val tagSpan2 = ImgTextSpan(this, Paint.Style.FILL, whiteColor, redColor, sp2px(16f), 3, 10, 10, 10)
         spannableString.setSpan(tagSpan2, 0, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         tv_span2.text = spannableString
     }
 
     private fun initTextSpan3() {
-        val spannableString = SpannableString("我是哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈")
+        val spannableString = SpannableString("b西安北京重庆青岛天津上海广州西安北京重庆青岛天津上海广州")
         val tagSpan2 = ImgTextSpan(
             this,
             Paint.Style.STROKE,
@@ -61,7 +58,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initTextSpan4() {
-        val spannableString = SpannableString("我是哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈")
+        val spannableString = SpannableString("西安北京重庆青岛天津上海广州西安北京重庆青岛天津上海广州")
         val tagSpan2 = ImgTextSpan(
             this,
             "https://relottery.ws.126.net/common/vip_diamond@3x.png",
