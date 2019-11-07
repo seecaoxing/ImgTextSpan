@@ -11,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.text.style.DynamicDrawableSpan;
 import android.text.style.ImageSpan;
+import android.util.DisplayMetrics;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -20,7 +21,6 @@ import java.lang.reflect.Field;
 
 /**
  * 获取网络图片的ImageSpan
- *
  */
 public class UrlImageSpan extends ImageSpan {
 
@@ -53,8 +53,9 @@ public class UrlImageSpan extends ImageSpan {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                     Resources resources = context.getResources();
+                    Bitmap result = zoom(resource, dp2px(context, 18));
 
-                    BitmapDrawable b = new BitmapDrawable(resources, resource);
+                    BitmapDrawable b = new BitmapDrawable(resources, result);
 
                     b.setBounds(0, 0, b.getIntrinsicWidth(), b.getIntrinsicHeight());
                     Field mDrawable;
@@ -105,6 +106,11 @@ public class UrlImageSpan extends ImageSpan {
         Bitmap newbm = Bitmap.createBitmap(bmp, 0, 0, width, height, matrix, true);
 
         return newbm;
+    }
+
+    public int dp2px(Context context, float dp) {
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
+        return (int) (dm.density * dp + 0.5f);
     }
 
     @Override

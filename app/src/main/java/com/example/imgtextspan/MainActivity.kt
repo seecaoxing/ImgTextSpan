@@ -58,10 +58,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initTextSpan4() {
-        val spannableString = SpannableString("西安北京重庆青岛天津上海广州西安北京重庆青岛天津上海广州")
+        val spannableString = SpannableString("西安北京重庆青岛天津上海广州西安北京重庆青岛天津上海广州西安北京重庆青岛天津上海广州西安北京重庆青岛天津上海广州")
         val tagSpan2 = ImgTextSpan(
             this,
-            "https://relottery.ws.126.net/common/vip_diamond@3x.png",
+            "https://b-ssl.duitang.com/uploads/blog/201312/04/20131204184148_hhXUT.jpeg",
             tv_span4,
             Paint.Style.FILL,
             whiteColor,
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
             20,
             20
         )
-        spannableString.setSpan(tagSpan2, 0, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(tagSpan2, 0, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         tv_span4.text = spannableString
     }
 

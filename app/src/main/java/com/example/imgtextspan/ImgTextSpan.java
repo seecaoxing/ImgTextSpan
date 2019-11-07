@@ -2,15 +2,13 @@ package com.example.imgtextspan;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
+import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.text.style.DynamicDrawableSpan;
 import android.text.style.ImageSpan;
+import android.util.DisplayMetrics;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -140,7 +138,8 @@ public class ImgTextSpan extends ImageSpan {
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                     Resources resources = context.getResources();
 
-                    BitmapDrawable b = new BitmapDrawable(resources, resource);
+                    Bitmap result = zoom(resource, dp2px(context, 18));
+                    BitmapDrawable b = new BitmapDrawable(resources, result);
 
                     b.setBounds(0, 0, b.getIntrinsicWidth(), b.getIntrinsicHeight());
                     Field mDrawable;
@@ -222,4 +221,28 @@ public class ImgTextSpan extends ImageSpan {
         canvas.drawText(tag, textCenterX, tagBaseLineY, mTagPaint);
     }
 
+    public static Bitmap zoom(@NonNull Bitmap bmp, int newW) {
+
+        // 获得图片的宽高
+        int width = bmp.getWidth();
+        int height = bmp.getHeight();
+
+        // 计算缩放比例
+        float scale = ((float) newW) / width;
+
+        // 取得想要缩放的matrix参数
+        Matrix matrix = new Matrix();
+        matrix.postScale(scale, scale);
+
+        // 得到新的图片
+        Bitmap newbm = Bitmap.createBitmap(bmp, 0, 0, width, height, matrix, true);
+
+        return newbm;
+    }
+
+
+    public int dp2px(Context context, float dp) {
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
+        return (int) (dm.density * dp + 0.5f);
+    }
 }
