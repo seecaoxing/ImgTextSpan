@@ -30,7 +30,7 @@ public class ImgTextSpan extends ImageSpan {
     private int mRectTopPaddingPx;
     private int mRectBottomPaddingPx;
 
-    private int imageWidth = 50;
+    private int imageWidth = 30;
 
     private Paint.Style mTagStyle;
 
@@ -57,6 +57,8 @@ public class ImgTextSpan extends ImageSpan {
         super(context, R.mipmap.icon_chat_zuanshi);
         this.context = context;
 
+        imageWidth = dp2px(context, 18);
+
         mTagStyle = tagStyle;
         mTagTextColor = tagTextColor;
         mTagBackgroundColor = tagBackgroundColor;
@@ -81,6 +83,7 @@ public class ImgTextSpan extends ImageSpan {
         super(context, bitmap);
         this.context = context;
         picShowed = true;
+        imageWidth = dp2px(context, 18);
 
         mTagStyle = tagStyle;
         mTagTextColor = tagTextColor;
@@ -110,6 +113,8 @@ public class ImgTextSpan extends ImageSpan {
         this.textView = textView;
         picShowed = false;
 
+        imageWidth = dp2px(context, 18);
+
         mTagStyle = tagStyle;
         mTagTextColor = tagTextColor;
         mTagBackgroundColor = tagBackgroundColor;
@@ -138,7 +143,7 @@ public class ImgTextSpan extends ImageSpan {
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                     Resources resources = context.getResources();
 
-                    Bitmap result = zoom(resource, dp2px(context, 18));
+                    Bitmap result = zoom(resource, imageWidth);
                     BitmapDrawable b = new BitmapDrawable(resources, result);
 
                     b.setBounds(0, 0, b.getIntrinsicWidth(), b.getIntrinsicHeight());
